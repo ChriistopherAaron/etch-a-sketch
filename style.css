@@ -39,8 +39,8 @@ body {
     border: 1px solid whitesmoke;
 }
 
-#slider-container {
-    margin: 0 auto;
+#grid-toggle {
+    cursor: pointer;
 }
 
 .slider {

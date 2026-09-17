@@ -1,23 +1,44 @@
-const GRIDSIDE = 600;
-let squaresPerSides = 16;
+const gridWidth = getComputedStyle(document.body).getPropertyValue("--grid-width");
+const accentColor = getComputedStyle(document.body).getPropertyValue("--accent-color");
+const inactiveColor = getComputedStyle(document.body).getPropertyValue("--inactive-color");
 
+const container = document.querySelector(".container");
 const sketchArea = document.querySelector("#sketch-area");
-const sliderContainer = document.querySelector("#slider-container");
 const slider = document.querySelector("#slider");
 const sliderValue = document.querySelector("#slider-value");
 
-sliderValue.textContent = `${slider.value} x ${slider.value} (Resolution)`;
-sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
+
+
+const gridToggle = document.querySelector("#grid-toggle");
+
+let squaresPerSides = 16;
+let gridVisible = false;
+
+function toggleGrid() {
+    gridVisible = gridVisible ? false : true;
+    gridToggle.style.color = gridVisible ? accentColor : inactiveColor;
+
+    removeGridCells();
+    createGridCells();
+}
+
 
 function setBackgroundColor () {
     this.style.backgroundColor = "black";
 }
 
-function createGridCells(squaresPerSides) {
+function createGridCells() {
     const numOfSquares = (squaresPerSides * squaresPerSides);
-    const widthOrHeight = `${(GRIDSIDE / squaresPerSides) -2}px`;
+    
     for (let i = 0; i < numOfSquares; i++) {
         const gridCell = document.createElement("div");
+
+        if (gridVisible) {
+            widthOrHeight = `${(pareseInt(gridWidth) / squaresPerSides) -2}px`;
+            gridCell.style.border = "1px solid whitesmoke";
+        } else if (!gridVisible) {
+            widthOrHeight = ``
+        }
 
         gridCell.style.width = gridCell.style.height = widthOrHeight;
         gridCell.classList.add("cell");
@@ -43,4 +64,4 @@ slider.oninput = function() {
     createGridCells(this.value);
 }
 
-createGridCells(16);
+createGridCells();
