@@ -11,8 +11,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    margin: 100px auto;
-    box-shadow: 10px 10px rgba(0, 170, 255, 0.034);
+    margin: 100px auto 0 auto;
 }
 
 .cell {
@@ -49,6 +48,13 @@ body {
     appearance: none;
     width: 25px;
     height: 25px;
-    background-color: #04aa60;
+    background-color: #04aa6d;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 35px;
+    background-color: #04aa6d;
     cursor: pointer;
 }
