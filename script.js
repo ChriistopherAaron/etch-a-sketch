@@ -13,7 +13,7 @@ function setBackgroundColor () {
     this.style.backgroundColor = "black";
 }
 
-function createGridCells(squaresPerSide) {
+function createGridCells(squaresPerSides) {
     const numOfSquares = (squaresPerSides * squaresPerSides);
     const widthOrHeight = `${(GRIDSIDE / squaresPerSides) -2}px`;
     for (let i = 0; i < numOfSquares; i++) {
@@ -29,7 +29,11 @@ function createGridCells(squaresPerSide) {
 }
 
 
-
+function removeGridCells() {
+    while (sketchArea.firstChild) {
+        sketchArea.removeChild(sketchArea.firstChild);
+    }
+}
 
 
 createGridCells(16);
