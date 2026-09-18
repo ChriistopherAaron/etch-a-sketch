@@ -1,15 +1,21 @@
 :root {
     --grid-width: 600px;
     --accent-color: #04aa6d;
-    --inactive-color: rgba(0,0,0, 0.25);
+    --inactive-color: rgba(0, 0, 0, 0.25);
 }
 
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 body {
     background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
 }
 
 .container {
@@ -19,44 +25,61 @@ body {
 
 .top {
     display: flex;
-    padding: 3px;
-    margin-top: 100px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 40px;
     background-color: white;
     color: var(--inactive-color);
-    width: fit-content;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
+    border-radius: 8px;
 }
 
 #sketch-area {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    margin: 100px auto 0 auto;
-}
-
-.cell {
-    border: 1px solid whitesmoke;
+    width: var(--grid-width);
+    height: var(--grid-width);
+    margin: 0 auto;
+    border: 2px solid #ccc;
 }
 
 #grid-toggle {
     cursor: pointer;
+    font-size: 28px;
+    user-select: none;
+}
+
+#size-btn {
+    padding: 6px 12px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#size-btn:hover {
+    opacity: 0.9;
+}
+
+#container {
+    width: var(--grid-width);
+    margin-top: 20px;
 }
 
 .slider {
     -webkit-appearance: none;
     appearance: none;
-    height: 25px;
+    height: 15px;
     width: 100%;
     background-color: rgba(200, 255, 238, 0.726);
     outline: none;
     opacity: 0.7;
-    -webkit-transition: .2s;
     transition: .2s;
-}
-
-#slider-value {
-    margin: 0 auto;
-    text-align: center;
+    border-radius: 5px;
 }
 
 .slider:hover {
@@ -70,11 +93,19 @@ body {
     height: 25px;
     background: var(--accent-color);
     cursor: pointer;
+    border-radius: 50%;
 }
 
 .slider::-moz-range-thumb {
     width: 25px;
-    height: 35px;
+    height: 25px;
     background: var(--accent-color);
     cursor: pointer;
+    border-radius: 50%;
+}
+
+#slider-value {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
 }
